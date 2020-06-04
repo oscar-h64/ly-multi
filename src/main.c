@@ -95,9 +95,11 @@ int main(int argc, char** argv)
 	struct desktop desktop;
 	struct text login;
 	struct text password;
+	struct text rfid;
 	input_desktop(&desktop);
 	input_text(&login, config.max_login_len);
 	input_text(&password, config.max_password_len);
+	input_text(&rfid, config.max_password_len);
 
 	if (dgn_catch())
 	{
@@ -113,18 +115,20 @@ int main(int argc, char** argv)
 		lang_load();
 	}
 
-	void* input_structs[3] =
+	void* input_structs[4] =
 	{
 		(void*) &desktop,
 		(void*) &login,
 		(void*) &password,
+		(void*) &rfid,
 	};
 
-	void (*input_handles[3]) (void*, struct tb_event*) =
+	void (*input_handles[4]) (void*, struct tb_event*) =
 	{
 		handle_desktop,
 		handle_text,
 		handle_text,
+		handle_text
 	};
 
 	desktop_load(&desktop);
@@ -183,6 +187,7 @@ int main(int argc, char** argv)
 				draw_desktop(&desktop);
 				draw_input(&login);
 				draw_input_mask(&password);
+				draw_input_mask(&rfid);
 				update = config.animate;
 			}
 			else
@@ -264,6 +269,7 @@ int main(int argc, char** argv)
 					if (config.blank_password)
 					{
 						input_text_clear(&password);
+						input_text_clear(&rfid);
 					}
 
 					dgn_reset();
@@ -293,6 +299,7 @@ int main(int argc, char** argv)
 	input_desktop_free(&desktop);
 	input_text_free(&login);
 	input_text_free(&password);
+	input_text_free(&rfid);
 	free_hostname();
 
 	// unload config

@@ -54,7 +54,8 @@ void position_input(
 	struct term_buf* buf,
 	struct desktop* desktop,
 	struct text* login,
-	struct text* password);
+	struct text* password,
+	struct text* rfid);
 
 void animate_init(struct term_buf* buf);
 void animate(struct term_buf* buf);

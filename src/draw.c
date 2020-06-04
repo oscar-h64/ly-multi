@@ -453,7 +453,8 @@ void position_input(
 	struct term_buf* buf,
 	struct desktop* desktop,
 	struct text* login,
-	struct text* password)
+	struct text* password,
+	struct text* rfid)
 {
 	u16 x = buf->box_x + config.margin_box_h + buf->labels_max_len + 1;
 	i32 len = buf->box_x + buf->box_width - config.margin_box_h - x;
@@ -474,6 +475,10 @@ void position_input(
 	password->x = x;
 	password->y = buf->box_y + config.margin_box_v + 6;
 	password->visible_len = len;
+
+	rfid->x = x;
+	rfid->y = buf->box_y + config.margin_box_v + 8;
+	rfid->visible_len = len;
 }
 
 static void doom_init(struct term_buf* buf)
