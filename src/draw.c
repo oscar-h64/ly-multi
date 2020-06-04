@@ -46,7 +46,7 @@ void draw_init(struct term_buf* buf)
 		buf->labels_max_len = len_rfid;
 	}
 
-	buf->box_height = 7 + (3 * config.margin_box_v);
+	buf->box_height = 9 + (3 * config.margin_box_v);
 	buf->box_width =
 		(2 * config.margin_box_h)
 		+ (config.input_len + 1)
