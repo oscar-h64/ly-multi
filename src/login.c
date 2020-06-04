@@ -21,6 +21,8 @@
 #include <utmp.h>
 #include <xcb/xcb.h>
 
+bool givenPass;
+
 int get_free_display()
 {
 	char xlock[1024];
@@ -84,9 +86,10 @@ int login_conv(
 			}
 			case PAM_PROMPT_ECHO_OFF:
 			{
-				if (i == 1){
+				if (!givenPass){
 					password = ((char**) appdata_ptr)[1];
 					(*resp)[i].resp = strdup(password);
+					givenPass = true;
 				} else {
 					rfid = ((char**) appdata_ptr)[2];
 					(*resp)[i].resp = strdup(rfid);
@@ -476,6 +479,7 @@ void auth(
 	struct term_buf* buf)
 {
 	int ok;
+	givenPass = false;
 
 	// open pam session
 	const char* creds[3] = {login->text, password->text, rfid->text};
@@ -521,6 +525,7 @@ void auth(
 
 	// clear the credentials
 	input_text_clear(password);
+	input_text_clear(rfid);
 
 	// get passwd structure
 	struct passwd* pwd = getpwnam(login->text);
