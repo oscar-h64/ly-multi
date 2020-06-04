@@ -31,17 +31,22 @@ void draw_init(struct term_buf* buf)
 
 	u16 len_login = strlen(lang.login);
 	u16 len_password = strlen(lang.password);
+	u16 len_rfid = strlen(lang.rfid);
 
-	if (len_login > len_password)
+	if (len_login > len_password && len_login > len_rfid)
 	{
 		buf->labels_max_len = len_login;
 	}
-	else
+	else if (len_password > len_login && len_password > len_rfid)
 	{
 		buf->labels_max_len = len_password;
 	}
+	else
+	{
+		buf->labels_max_len = len_rfid;
+	}
 
-	buf->box_height = 7 + (2 * config.margin_box_v);
+	buf->box_height = 7 + (3 * config.margin_box_v);
 	buf->box_width =
 		(2 * config.margin_box_h)
 		+ (config.input_len + 1)
