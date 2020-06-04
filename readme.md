@@ -1,4 +1,8 @@
 # Ly - a TUI display manager
+
+This is a work in progress. Initially it will just have an extra field labelled RFID, eventually whether to use the field should be optional, and the label should be configurable/use the prompt provided by pam
+<hr>
+
 [![CodeFactor](https://www.codefactor.io/repository/github/cylgom/ly/badge/master)](https://www.codefactor.io/repository/github/cylgom/ly/overview/master)
 ![Ly screenshot](https://user-images.githubusercontent.com/5473047/42466218-8cb53d3c-83ae-11e8-8e53-bae3669f959c.png "Ly screenshot")
 
