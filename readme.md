@@ -2,7 +2,15 @@
 
 ![C Build CI](https://github.com/oscar-h64/ly-multi/workflows/C%20Build%20CI/badge.svg)
 
-This is a work in progress. Initially it will just have an extra field labelled RFID, eventually whether to use the field should be optional, and the label should be configurable/use the prompt provided by pam
+## This Fork:
+
+This is a work in progress. Initially it will just have an extra field labelled RFID, eventually whether to use the field should be optional, and the label should be configurable/use the prompt provided by PAM
+
+Progress:
+1. ~~Add 3rd field to send to PAM labelled "rfid:"~~
+2. Make field label configurable in config.ini
+3. Add config option to specify number of extra fields and a list of labels. (Correct height appears to be `5 + numFields + (numFields * config.margin_box_v)`)
+
 <hr>
 
 [![CodeFactor](https://www.codefactor.io/repository/github/cylgom/ly/badge/master)](https://www.codefactor.io/repository/github/cylgom/ly/overview/master)
