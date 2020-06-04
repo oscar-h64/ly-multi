@@ -1,5 +1,7 @@
 # Ly - a TUI display manager
 
+![C Build CI](https://github.com/oscar-h64/ly-multi/workflows/C%20Build%20CI/badge.svg)
+
 This is a work in progress. Initially it will just have an extra field labelled RFID, eventually whether to use the field should be optional, and the label should be configurable/use the prompt provided by pam
 <hr>
 
