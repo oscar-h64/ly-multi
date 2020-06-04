@@ -1,0 +1,25 @@
+
+name: C Build CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1 
+      with:
+        submodules: true
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get install libpam0g-dev
+      
+    - name: Build 
+      run: |
+        make
+#    - name: Run tests 
+#      run: |
+#        stack test --fast
