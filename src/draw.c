@@ -237,6 +237,24 @@ void draw_labels(struct term_buf* buf) // throws
 		free(password);
 	}
 
+	// RFID text
+	struct tb_cell* rfid = str_cell(lang.rfid);
+
+	if (dgn_catch())
+	{
+		dgn_reset();
+	}
+	else
+	{
+		tb_blit(
+			buf->box_x + config.margin_box_h,
+			buf->box_y + config.margin_box_v + 8,
+			strlen(lang.rfid),
+			1,
+			rfid);
+		free(rfid);
+	}
+
 	if (buf->info_line != NULL)
 	{
 		u16 len = strlen(buf->info_line);

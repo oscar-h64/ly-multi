@@ -53,6 +53,7 @@ struct lang
 	char* logout;
 	char* numlock;
 	char* password;
+	char* rfid;
 	char* shell;
 	char* wayland;
 	char* xinitrc;
