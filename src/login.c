@@ -466,12 +466,13 @@ void auth(
 	struct desktop* desktop,
 	struct text* login,
 	struct text* password,
+	struct text* rfid,
 	struct term_buf* buf)
 {
 	int ok;
 
 	// open pam session
-	const char* creds[2] = {login->text, password->text};
+	const char* creds[3] = {login->text, password->text, rfid->text};
 	struct pam_conv conv = {login_conv, creds};
 	struct pam_handle* handle;
 

@@ -252,7 +252,7 @@ int main(int argc, char** argv)
 				break;
 			case TB_KEY_ENTER:
 				save(&desktop, &login);
-				auth(&desktop, &login, &password, &buf);
+				auth(&desktop, &login, &password, &rfid, &buf);
 				update = true;
 
 				if (dgn_catch())
