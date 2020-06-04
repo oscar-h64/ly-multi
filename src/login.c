@@ -68,6 +68,7 @@ int login_conv(
 
 	char* username;
 	char* password;
+	char* rfid;
 	int ok = PAM_SUCCESS;
 	int i;
 
@@ -83,8 +84,13 @@ int login_conv(
 			}
 			case PAM_PROMPT_ECHO_OFF:
 			{
-				password = ((char**) appdata_ptr)[1];
-				(*resp)[i].resp = strdup(password);
+				if (i == 1){
+					password = ((char**) appdata_ptr)[1];
+					(*resp)[i].resp = strdup(password);
+				} else {
+					rfid = ((char**) appdata_ptr)[2];
+					(*resp)[i].resp = strdup(rfid);
+				}
 				break;
 			}
 			case PAM_ERROR_MSG:
