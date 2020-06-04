@@ -7,6 +7,7 @@ enum INPUTS {
 	SESSION_SWITCH,
 	LOGIN_INPUT,
 	PASSWORD_INPUT,
+	RFID_INPUT,
 };
 
 struct lang

@@ -235,7 +235,7 @@ int main(int argc, char** argv)
 				}
 				break;
 			case TB_KEY_ARROW_DOWN:
-				if (active_input < 2)
+				if (active_input < 3)
 				{
 					++active_input;
 					update = true;
@@ -244,9 +244,9 @@ int main(int argc, char** argv)
 			case TB_KEY_TAB:
 				++active_input;
 
-				if (active_input > 2)
+				if (active_input > 3)
 				{
-					active_input = PASSWORD_INPUT;
+					active_input = RFID_INPUT;
 				}
 				update = true;
 				break;
