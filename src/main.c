@@ -183,7 +183,7 @@ int main(int argc, char** argv)
 				draw_labels(&buf);
 				draw_f_commands();
 				draw_lock_state(&buf);
-				position_input(&buf, &desktop, &login, &password);
+				position_input(&buf, &desktop, &login, &password, &rfid);
 				draw_desktop(&desktop);
 				draw_input(&login);
 				draw_input_mask(&password);
