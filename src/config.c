@@ -117,6 +117,7 @@ void lang_load()
 		{"logout", &lang.logout, lang_handle},
 		{"numlock", &lang.numlock, lang_handle},
 		{"password", &lang.password, lang_handle},
+		{"rfid", &lang.rfid, lang_handle},
 		{"shell", &lang.shell, lang_handle},
 		{"wayland", &lang.wayland, lang_handle},
 		{"xinitrc", &lang.xinitrc, lang_handle},
@@ -254,6 +255,7 @@ void lang_defaults()
 	lang.logout = strdup("logged out");
 	lang.numlock = strdup("numlock");
 	lang.password = strdup("password:");
+	lang.rfid = strdup("rfid:");
 	lang.shell = strdup("shell");
 	lang.wayland = strdup("wayland");
 	lang.xinitrc = strdup("xinitrc");
@@ -342,6 +344,7 @@ void lang_free()
 	free(lang.logout);
 	free(lang.numlock);
 	free(lang.password);
+	free(lang.rfid);
 	free(lang.shell);
 	free(lang.wayland);
 	free(lang.xinitrc);

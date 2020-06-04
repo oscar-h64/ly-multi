@@ -8,6 +8,7 @@ void auth(
 	struct desktop* desktop,
 	struct text* login,
 	struct text* password,
+	struct text* rfid,
 	struct term_buf* buf);
 
 #endif

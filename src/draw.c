@@ -31,17 +31,22 @@ void draw_init(struct term_buf* buf)
 
 	u16 len_login = strlen(lang.login);
 	u16 len_password = strlen(lang.password);
+	u16 len_rfid = strlen(lang.rfid);
 
-	if (len_login > len_password)
+	if (len_login > len_password && len_login > len_rfid)
 	{
 		buf->labels_max_len = len_login;
 	}
-	else
+	else if (len_password > len_login && len_password > len_rfid)
 	{
 		buf->labels_max_len = len_password;
 	}
+	else
+	{
+		buf->labels_max_len = len_rfid;
+	}
 
-	buf->box_height = 7 + (2 * config.margin_box_v);
+	buf->box_height = 8 + (3 * config.margin_box_v);
 	buf->box_width =
 		(2 * config.margin_box_h)
 		+ (config.input_len + 1)
@@ -235,6 +240,24 @@ void draw_labels(struct term_buf* buf) // throws
 			1,
 			password);
 		free(password);
+	}
+
+	// RFID text
+	struct tb_cell* rfid = str_cell(lang.rfid);
+
+	if (dgn_catch())
+	{
+		dgn_reset();
+	}
+	else
+	{
+		tb_blit(
+			buf->box_x + config.margin_box_h,
+			buf->box_y + config.margin_box_v + 8,
+			strlen(lang.rfid),
+			1,
+			rfid);
+		free(rfid);
 	}
 
 	if (buf->info_line != NULL)
@@ -453,7 +476,8 @@ void position_input(
 	struct term_buf* buf,
 	struct desktop* desktop,
 	struct text* login,
-	struct text* password)
+	struct text* password,
+	struct text* rfid)
 {
 	u16 x = buf->box_x + config.margin_box_h + buf->labels_max_len + 1;
 	i32 len = buf->box_x + buf->box_width - config.margin_box_h - x;
@@ -474,6 +498,10 @@ void position_input(
 	password->x = x;
 	password->y = buf->box_y + config.margin_box_v + 6;
 	password->visible_len = len;
+
+	rfid->x = x;
+	rfid->y = buf->box_y + config.margin_box_v + 8;
+	rfid->visible_len = len;
 }
 
 static void doom_init(struct term_buf* buf)
