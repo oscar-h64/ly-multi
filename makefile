@@ -111,17 +111,8 @@ remotes:
 	@git remote add gitea ssh://git@git.cylgom.net:2999/cylgom/$(NAME).git
 
 github:
-	@echo "sourcing submodules from https://github.com"
-	@cp .github .gitmodules
+	@echo "sourcing submodules from https://github.com/"
 	@git submodule sync
 	@git submodule update --init --remote
 	@cd $(SUBD)/argoat && make github
-	@git submodule update --init --recursive --remote
-
-gitea:
-	@echo "sourcing submodules from https://git.cylgom.net"
-	@cp .gitea .gitmodules
-	@git submodule sync
-	@git submodule update --init --remote
-	@cd $(SUBD)/argoat && make gitea
 	@git submodule update --init --recursive --remote
